@@ -1,0 +1,22 @@
+version: "3"
+services:
+    postgres:
+        image: postgres:latest
+        container_name: postgres
+        hostname: postgres
+        environment:
+            POSTGRES_DB: taskmanagerdb
+            POSTGRES_USER: db_korisnik
+            POSTGRES_PASSWORD: nekaJakaSifra
+
+        restart: unless-stopped
+    backend:
+        build:
+            context: ./backend/task-manager-be
+        ports:
+            - "3000:3000"
+    frontend:
+        build:
+            context: ./frontend/task-manager-fe
+        ports:
+            - "8080:8080"
