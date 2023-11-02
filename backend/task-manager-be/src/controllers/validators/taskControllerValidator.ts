@@ -1,6 +1,20 @@
-import { body, param } from "express-validator";
+import { body, header, param, query } from "express-validator";
+import { validateToken } from "../../helpers/jwtHelper";
+
+const customValidateToken = (value: string) => {
+    if (!value) {
+        throw new Error("Authorization header is required");
+    }
+
+    if (!value.startsWith("Bearer ")) {
+        throw new Error("Invalid Authorization header");
+    }
+
+    return validateToken(value.split(" ")[1]);
+};
 
 export const createTaskValidationRules = [
+    header("Authorization").custom((value) => customValidateToken(value)),
     body("title").notEmpty().withMessage("Title is required"),
     body("description").notEmpty().withMessage("Description is required"),
     body("priority")
@@ -10,7 +24,11 @@ export const createTaskValidationRules = [
 ];
 
 export const getAllTasksValidationRules = [
-    param("ownerId").isInt().withMessage("Invalid ownerId"),
+    header("Authorization").custom((value) => customValidateToken(value)),
+    query("ownerId").isInt().withMessage("Invalid ownerId"),
 ];
 
-export const validateIdParam = [param("id").isInt().withMessage("Invalid id")];
+export const validateIdParam = [
+    header("Authorization").custom((value) => customValidateToken(value)),
+    param("id").isInt().withMessage("Invalid id"),
+];

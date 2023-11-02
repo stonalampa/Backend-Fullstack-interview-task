@@ -10,6 +10,11 @@ import { validationResult } from "express-validator";
 import { Request, Response } from "express";
 
 export const getTaskController = async (req: Request, res: Response) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     try {
         const task = await getTask(Number.parseInt(req.params.id));
         res.status(200).json(task);
@@ -19,6 +24,11 @@ export const getTaskController = async (req: Request, res: Response) => {
 };
 
 export const getAllTasksController = async (req: Request, res: Response) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     try {
         const tasks = await getTasks(
             Number.parseInt(req.query.ownerId as string)
@@ -50,6 +60,11 @@ export const createTaskController = async (req: Request, res: Response) => {
 };
 
 export const updateTaskController = async (req: Request, res: Response) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     try {
         const props: Partial<Task> = {
             title: req.body?.title,

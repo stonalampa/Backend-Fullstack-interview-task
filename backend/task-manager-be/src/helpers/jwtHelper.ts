@@ -15,11 +15,14 @@ export const generateToken = (id: number, email: string): string => {
     return token;
 };
 
-export const validateToken = (token: string): User | null => {
+export const validateToken = async (token: string): Promise<boolean> => {
     try {
-        const decoded = jwt.verify(token, JWT_SECRET) as User;
-        return decoded;
+        const decoded = await jwt.verify(token, JWT_SECRET);
+        if (!decoded) {
+            return false;
+        }
+        return true;
     } catch (error) {
-        return null;
+        return false;
     }
 };
