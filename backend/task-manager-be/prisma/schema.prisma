@@ -25,6 +25,7 @@ model User {
   id       Int    @id @default(autoincrement())
   email    String @unique
   password String
+  tasks    Task[]
 }
 
 model Task {
@@ -33,4 +34,6 @@ model Task {
   description String
   priority    Priority
   status      Status
+  owner       User     @relation(fields: [ownerId], references: [id])
+  ownerId     Int
 }
