@@ -1,0 +1,36 @@
+/* Tasks.css */
+.task-manager-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top-menu {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.top-menu > button {
+    margin-right: 10px;
+}
+
+.task-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.task-thumbnail {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+/* You can add more styles as needed */

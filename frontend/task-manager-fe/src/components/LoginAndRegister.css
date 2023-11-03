@@ -1,0 +1,79 @@
+/* LoginForm.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    max-width: 400px;
+}
+
+.login-box h1 {
+    color: #8a2be2;
+    font-size: 24px;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 20px;
+    margin: 0 10px; /* Set equal margins on both sides */
+}
+
+.form-group label {
+    display: block;
+    color: #8a2be2;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: #000; /* Set input text color to black */
+}
+
+.login-button {
+    background-color: #8a2be2;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.signup-link {
+    color: #8a2be2;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    width: 100%; /* Ensure the error message div occupies the full width */
+    text-align: left; /* Left-align the error message text */
+}
